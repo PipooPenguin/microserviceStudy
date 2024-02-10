@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState,useContext } from "react";
+import api from "../../api/blogs";
+import Postcontext from "../../hook/postcontext";
 
 const Post_Create = () => {
+  const {setPost,post} = useContext(Postcontext);
   const [input, setInput] = useState({
     title: "",
     content: "",
@@ -9,9 +11,12 @@ const Post_Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("handleSubmit inputfield: ", input);
-      const res = await axios.post("http://localhost:3001/create", input);
+      const {data} = await api.post("/create", input);
+      // const id = data.id;
       setInput({ title: "", content: "" });
+      console.log("handleSubmit inputfield: ", [...post,data]);
+      setPost([...post,data]);
+
     } catch (error) {
       console.log("components/Posts Post_Create.jsx error");
     }
@@ -48,7 +53,7 @@ const Post_Create = () => {
             />
         </div>
 
-        <button type="submit">click it</button>
+        <button type="submit">enter</button>
       </form>
     </>
   );

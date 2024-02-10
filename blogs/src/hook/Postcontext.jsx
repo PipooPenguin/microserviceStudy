@@ -1,6 +1,6 @@
 import React from "react";
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/blogs";
 
 const Postcontext = createContext({});
 export const PostcontextProvider = ({ children }) => {
@@ -8,10 +8,10 @@ export const PostcontextProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async ()=>{
       try {
-        const url = "http://localhost:3001/list";
-        const res = await axios(url);
+        const url = "/list";
+        const res = await api.get(url);
         // const data = JSON.parse(res.data);
-        // console.log("Postcontext PostcontextProvider res: ", res.data);
+        console.log("Postcontext PostcontextProvider res: ", res.data);
         setPost(res.data);
       } catch (error) {
         console.log("Postcontext PostcontextProvider error: ");

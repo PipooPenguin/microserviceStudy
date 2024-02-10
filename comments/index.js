@@ -8,16 +8,16 @@ const app = express();
 app.use(bodyParser.json());
 moment.locale('vi')
 
-const comments = {};
+// const comments = {};
 app.post("/post/:id/create",(req,res)=>{
     const id = randomBytes(5).toString('hex');
     const {content} = req.body;
-    if (comments[req.params.id]== null)
-    {
-        comments[req.params.id] = [];
-    }
+    // if (comments[req.params.id]== null)
+    // {
+    //     comments[req.params.id] = [];
+    // }
     const newcomments = {id, content};
-    comments[req.params.id].push(newcomments);
+    // comments[req.params.id].push(newcomments);
     // console.log("comments post /post/:id/create comments: ",comments);
     res.send(comments);
 })

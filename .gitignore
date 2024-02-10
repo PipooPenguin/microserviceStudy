@@ -1,4 +1,5 @@
 blogs/node_modules/
 posts/node_modules/
 comments/node_modules/
+evenBus/node_modules/
 # blogs/package-lock.json

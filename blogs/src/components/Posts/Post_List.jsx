@@ -1,19 +1,17 @@
 import React from "react";
 import { useContext } from "react";
 import Postcontext from "../../hook/postcontext";
+import Post_Item from "./Post_Item";
 
 const Post_List = () => {
   const { post } = useContext(Postcontext);
-  console.log("Pist_List greet: ", Object.values(post));
+  console.log("Pist_List post: ", post);
   return (
     <>
-      {Object.values(post).length !== 0 ? (
+      {post.length !== 0 ? (
         <>
-          {Object.values(post).map((item) => (
-              < div key = {item.id}>
-                <p>{item.title}</p>
-                <p>{item.content}</p>
-              </div>
+          {post.map((item) => (
+            <Post_Item key={item.id} item={item}/>
           ))}
         </>
       ) : (
